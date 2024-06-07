@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -18,9 +17,9 @@ public class Course {
     @Column(name = "course_id")
     private long courseId;
 
-    @Column(name = "course_name")
+    @Column(name = "course_name")    
     private String courseName;
-
+    
     private int fees;
     
     @Column(name = "no_of_hours")
@@ -40,7 +39,6 @@ public class Course {
     @OneToOne(mappedBy = "course")
     private FacultyProfile facultyProfile;
     
-    
     @OneToOne(mappedBy = "course")
     private UserCourse userCourse;
     
@@ -58,5 +56,7 @@ public class Course {
         this.prerequisites = prerequisites;
         this.type = type;
         this.facultyProfile = facultyProfile;
+   
     }
+   
 }
