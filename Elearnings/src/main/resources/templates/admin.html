@@ -1,0 +1,90 @@
+
+    <title>Admin Dashboard</title>
+    <link th:href="@{./css/index.css}" rel="stylesheet" />
+
+    <div th:insert="~{../templates/index.html}"></div>
+
+    <div class="slidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="#">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+             <li>
+                    <a href="#courseMenu" data-bs-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-book"></i>
+                        <span>Course</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="courseMenu">
+                        <li><a href="addcourse">New Course</a></li>
+                        <li><a href="/api/courses/courselist">View Course</a></li>
+                    </ul>
+                </li>
+              <li>
+                    <a href="#courseMenu" data-bs-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-book"></i>
+                        <span>Add Chapter</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="courseMenu">
+                        <li><a href="addcourse">New Chapter</a></li>
+                        <li><a href="showcourse">View Chapter</a></li>
+                    </ul>
+                </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-life-ring" aria-hidden="true"></i>
+                    <span>Interview Question</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                    <span>Assignments</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                    <span>Add Topic</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                    <span>Test</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#">
+                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Admin</span>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="user--info">
+                <div class="search--box">
+                    <i class="fa solid fa-search"></i>
+                    <input type="text" placeholder="Search" id="">
+                </div>
+                <img src="./image/img.jpg" alt="">
+            </div>
+        </div>
+    
+

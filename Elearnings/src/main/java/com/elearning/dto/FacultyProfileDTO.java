@@ -31,12 +31,10 @@ public class FacultyProfileDTO {
     @Column(name = "experience")
     private String experience;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id", referencedColumnName = "course_id")
-    private Course course;
+    private long   courseId;
 
     public FacultyProfileDTO(String facultyName, String profilePhoto, String designation, String qualification,
-                          String skillSet, String experience) {
+                          String skillSet, String experience, long courseid) {
         super();
         this.facultyName = facultyName;
         this.profilePhoto = profilePhoto;
@@ -44,5 +42,7 @@ public class FacultyProfileDTO {
         this.qualification = qualification;
         this.skillSet = skillSet;
         this.experience = experience;
+        this.courseId=courseid;
     }
+    
 }

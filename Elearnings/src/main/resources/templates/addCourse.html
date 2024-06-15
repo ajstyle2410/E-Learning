@@ -1,0 +1,76 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Course Form</title>
+    <link th:href="@{./css/addCourse.css}" rel="stylesheet" />
+</head>
+<body class="d-flex">
+    <div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4>Course Details</h4>
+            </div>
+        </div>
+        <form class="form" th:action="@{/api/courses/addcourses}" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-container">
+                        <label for="courseName">Course Name</label>
+                        <input type="text" id="courseName" placeholder="Enter Course Name" name="courseName">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-container">
+                        <label for="fees">Course Fees</label>
+                        <input type="text" id="fees" placeholder="Enter Course Fees" name="fees">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-container">
+                        <label for="noOfHours">Course Hours</label>
+                        <input type="text" id="noOfHours" placeholder="Enter Course Hours" name="noOfHours">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-container">
+                        <label for="prerequisites">Pre Requisite</label>
+                        <input type="text" id="prerequisites" placeholder="Enter Pre Requisite" name="prerequisites">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-container">
+                        <label for="banner">Upload Banner</label>
+                        <input type="file" id="banner" name="banner">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-container">
+                        <label for="type">Course Type</label>
+                        <input type="text" id="type" placeholder="Enter Course Type" name="type">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="input-container">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Enter the Course Objective" id="floatingTextarea" name="objective"></textarea>
+                            <label for="floatingTextarea">Course Objective</label>
+                        </div>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
