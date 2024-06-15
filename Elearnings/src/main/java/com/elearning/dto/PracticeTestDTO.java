@@ -25,13 +25,11 @@ public class PracticeTestDTO {
 	 private String Option3;
 	 private String Option4;
 	 private int Answer;
-	
-	   @ManyToOne(cascade = CascadeType.ALL)
-	    @JoinColumn(name = "topic_id", nullable = false)
-	    private Topic topic;
+
+	    private Integer  topicId;
 
 	public PracticeTestDTO(String question, String description, String option1, String option2, String option3,
-			String option4, int answer, Topic topic) {
+			String option4, int answer, Integer  topic) {
 		super();
 		Question = question;
 		Description = description;
@@ -40,7 +38,7 @@ public class PracticeTestDTO {
 		Option3 = option3;
 		Option4 = option4;
 		Answer = answer;
-		this.topic = topic;
+		this.topicId = topic;
 	}
 	   
 	

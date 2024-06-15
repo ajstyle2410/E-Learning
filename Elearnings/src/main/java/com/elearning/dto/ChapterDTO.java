@@ -32,9 +32,8 @@ public class ChapterDTO {
 		this.course = course;
 	}
 	
-	 @ManyToOne(cascade = CascadeType.ALL)
-	    @JoinColumn(name = "topic_id", nullable = false)
-	    private Topic topic;
+	
+	    private Integer  topicId;
 	   
 	
 }

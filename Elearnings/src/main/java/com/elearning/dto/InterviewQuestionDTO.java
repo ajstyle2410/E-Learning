@@ -17,15 +17,14 @@ public class InterviewQuestionDTO {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "topic_id", nullable = false)
-    private Topic topic;
+    private Integer  topicId;
 
-	public InterviewQuestionDTO(String question, String description, Topic topic) {
+
+	public InterviewQuestionDTO(String question, String description, Integer  topic) {
 		super();
 		this.question = question;
 		this.description = description;
-		this.topic = topic;
+		this.topicId = topic;
 	}
     
     

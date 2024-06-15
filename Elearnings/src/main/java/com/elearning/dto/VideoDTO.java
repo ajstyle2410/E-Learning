@@ -1,10 +1,6 @@
 package com.elearning.dto;
 
-import com.elearning.model.Topic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,23 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class VideoDTO {
 
-	@Column(columnDefinition = "TEXT")
-	private String Title;
-	@Column(columnDefinition = "TEXT")
-	private String Description;
-	@Column(columnDefinition = "TEXT")
-	private String Url;
+    private String title;
+    private String description;
+    private String url;
+    private Integer topicId;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "topic_id", nullable = false)
-	private Topic topic;
-
-	public VideoDTO(String title, String description, String url, Topic topic) {
-		super();
-		Title = title;
-		Description = description;
-		Url = url;
-		this.topic = topic;
-	}
-
+    public VideoDTO(String title, String description, String url, Integer topicId) {
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.topicId = topicId;
+    }
 }

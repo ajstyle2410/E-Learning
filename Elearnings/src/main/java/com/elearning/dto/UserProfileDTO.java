@@ -29,7 +29,6 @@ public class UserProfileDTO {
 	}
 	  
 	  
-	@OneToOne(mappedBy = "userProfile")
-	 private  UserCourse userCourse;
+	 private  Integer  userCourseId;
 	  
 }
