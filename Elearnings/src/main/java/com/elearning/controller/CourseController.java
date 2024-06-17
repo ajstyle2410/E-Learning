@@ -24,7 +24,7 @@ import com.elearning.service.CourseServiceInterface;
 //@RequestMapping("/api/courses/")
 public class CourseController {
 
-	private static final String COURSE_IMAGE_PATH = "D:/Projects/E-Learning/Elearnings/src/main/resources/images/course/banner/";
+	private static final String COURSE_IMAGE_PATH = "D:/Projects/E-Learning/Elearnings/src/main/resources/static/uploads/";
 
 	@Autowired
 	private CourseServiceInterface courseServiceInterface;

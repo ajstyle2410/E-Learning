@@ -1,29 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-       <div th:insert="~{../templates/admin.html}"></div>
+
+	<div th:insert="~{../templates/admin.html}"></div>
 
 
 
- <section>
-        <div class="row">
-            <div class="col-md-3" th:each="im : ${list}">
-                <div class="card">
-                    <div class="card-body">
-                        <div  th:text	=${im.banner}></div>
-                        <img th:src="@{'/uploads/' + ${im.banner}}" width="100%" height="auto" alt="Course Banner"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+	<!-- <section>
+		<div class="row">
+			<div class="col-md-3" th:each="im : ${list}">
+				<div class="card">
+					<div class="card-body">
+						<div th:text=${im.banner}></div>
+						<img th:src="@{'/uploads/' + ${im.banner}}" width="100%"
+							height="auto" alt="Course Banner" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center ">
+				<table
+					summary="This table shows how to create responsive tables using Datatables' extended functionality"
+					class="table table-bordered table-hover dt-responsive">
+					<thead>
+						<tr>
+							<th>#</th>
+				
+							<th>Course Name</th>
+							<th>Banner </th>
+							<th>Banner Image</th>
+							<th>Fees</th>
+							<th>Hours</th>
+							<th>Objective</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="im : ${list}" class="text-center">
+							<td th:text=${im.courseId}></td>
+
+							<td th:text=${im.courseName}></td>
+
+							<td th:text=${im.banner}></td>
+							<td>
+							 <img th:src="@{'/uploads/' + ${im.banner}}" width="100%"
+							height="auto" alt="Course Banner" />
+							</td>
+							<td th:text=${im.fees}></td>
+							<td th:text=${im.noOfHours}></td>
+							<td th:text=${im.objective}></td>
 
 
 
 
-</body>
-</html>
+						</tr>
+
+
+					</tbody>
+					<tfoot>
+
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('table').DataTable();
+	</script>

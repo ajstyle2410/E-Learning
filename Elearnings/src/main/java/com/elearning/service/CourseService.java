@@ -26,9 +26,11 @@ public class CourseService implements CourseServiceInterface {
 	
 	@Override
 	public String addCourse(CourseDTO course) {
+		
 	    System.err.println(course.toString());
 
-  System.out.println("***********************************************");
+	    
+	    
 		Course courses = new Course(course.getCourseName(), course.getFees(), course.getNoOfHours(), course.getBanner().getOriginalFilename(),
 				course.getObjective(), course.getPrerequisites(), course.getType(), course.getPath() );
 	
