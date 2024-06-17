@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,73 +21,56 @@ import com.elearning.model.Course;
 import com.elearning.service.CourseServiceInterface;
 
 @RestController
-@RequestMapping("/api/courses/")
+//@RequestMapping("/api/courses/")
 public class CourseController {
 
-    private static final String UPLOADED_FOLDER = "D:/Projects/E-Learning/Elearnings/src/main/resources/images/course/banner/";
+	private static final String COURSE_IMAGE_PATH = "D:/Projects/E-Learning/Elearnings/src/main/resources/images/course/banner/";
 
-    @Autowired
-    private CourseServiceInterface courseServiceInterface;
+	@Autowired
+	private CourseServiceInterface courseServiceInterface;
 
-    @PostMapping("addcourses")
-    public ModelAndView  addCourse(@RequestParam("courseName") String courseName,
-                                            @RequestParam("fees") int fees,
-                                            @RequestParam("noOfHours") int noOfHours,
-                                            @RequestParam("prerequisites") String prerequisites,
-                                            @RequestParam("banner") MultipartFile banner,
-                                            @RequestParam("type") String type,
-                                            @RequestParam("objective") String objective) throws IOException {
-    	
-    	
-    	System.out.println("***********************************"+banner.getOriginalFilename());
-    	
-        // Save the file to the local filesystem
-        byte[] bytes = banner.getBytes();
-        File dir = new File(UPLOADED_FOLDER);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        File file = new File(UPLOADED_FOLDER + banner.getOriginalFilename());
-        banner.transferTo(file);
+	@PostMapping("addcourses")
+	public ModelAndView addCourse(@RequestParam("courseName") String courseName, @RequestParam("fees") int fees,
+			@RequestParam("noOfHours") int noOfHours, @RequestParam("prerequisites") String prerequisites,
+			@RequestParam("banner") MultipartFile banner, @RequestParam("type") String type,
+			@RequestParam("objective") String objective) throws IOException {
+		// Save the file to the local filesystem
+		byte[] bytes = banner.getBytes();
+		File dir = new File(COURSE_IMAGE_PATH);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		File file = new File(COURSE_IMAGE_PATH + banner.getOriginalFilename());
+		banner.transferTo(file);
 
-        // Convert DTO to entity
-        CourseDTO course = new CourseDTO();
-        course.setCourseName(courseName);
-        course.setFees(fees);
-        course.setNoOfHours(noOfHours);
-         course.setBanner(banner);
-        course.setPrerequisites(prerequisites);
-        course.setPath(file.getAbsolutePath());
-        course.setType(type);
-        course.setObjective(objective);
+		// Convert DTO to entity
+		CourseDTO course = new CourseDTO();
+		course.setCourseName(courseName);
+		course.setFees(fees);
+		course.setNoOfHours(noOfHours);
+		course.setPrerequisites(prerequisites);
+		course.setPath(file.getAbsolutePath());
+		course.setType(type);
+		course.setObjective(objective);
+		course.setBanner(banner);
 
-        System.out.println(course.toString());
-
-        // Save the course entity
-     String msg=    courseServiceInterface.addCourse(course);
-     
-     
-         if(msg!=null)
-         {
-        	    return new ModelAndView("redirect:/api/courses/courselist") ;
-         }else {
-        	  return null;
-         }
-
-    }
-
-    @GetMapping("courselist")
-    public ModelAndView  viewCourse(ModelMap model) {
-        System.err.println("++++++++++++++++");
-
-    List<Course> list=       courseServiceInterface.viewCourse();
-       
-     for (Iterator<Course> iterator = list.iterator(); iterator.hasNext();) {
-		Course course = (Course) iterator.next();
-		  System.err.println(course.getBanner()+"\t"+course.getPath());
+  System.out.println(course.toString());
+  courseServiceInterface.addCourse(course);
+		return new ModelAndView("redirect:courselist");
 	}
-    
-     model.addAttribute("list",list);
-	return  new ModelAndView("showCourse");
-    }
+
+	@GetMapping("courselist")
+	public ModelAndView viewCourse(Model map) {
+		List<Course>  list = courseServiceInterface.viewCourse();
+		
+		 for (Iterator<Course> iterator = list.iterator(); iterator.hasNext();) {
+			Course c = (Course) iterator.next();
+			System.out.println(c.toString());
+			
+		}
+		
+		map.addAttribute("list", list);
+		
+		return new ModelAndView("viewCourse");
+	}
 }

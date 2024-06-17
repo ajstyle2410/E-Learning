@@ -50,7 +50,7 @@ public class Course {
 	@OneToOne(mappedBy = "course")
 	private Chapter chapter;
 
-	public Course(long courseId, String courseName, int fees, int noOfHours, String banner, String objective,
+	public Course( String courseName, int fees, int noOfHours, String banner, String objective,
 			String prerequisites, String type, String path) {
 		super();
 		this.courseId = courseId;

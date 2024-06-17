@@ -1,5 +1,6 @@
 package com.elearning.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -25,23 +26,25 @@ public class CourseService implements CourseServiceInterface {
 	
 	@Override
 	public String addCourse(CourseDTO course) {
-		
-		/*
-		 *         Integer topicId = assignmentDTO.getTopicId();
-        Topic topic = topicRepository.findById(topicId.intValue()).get();
-		 * */
-	
-	
-			
-		Course courses = new Course(0, course.getCourseName(), course.getFees(), course.getNoOfHours(), course.getBanner().getOriginalFilename(),
+	    System.err.println(course.toString());
+
+  System.out.println("***********************************************");
+		Course courses = new Course(course.getCourseName(), course.getFees(), course.getNoOfHours(), course.getBanner().getOriginalFilename(),
 				course.getObjective(), course.getPrerequisites(), course.getType(), course.getPath() );
+	
+		System.err.println(courses.toString());
+
+		 
 		try {
+			
+			    
 			courseRepository.save(courses);
 			return courses.getCourseName();
 		} catch (Exception ex) {
+			return null;
 		}
 		
-		return null;
+	
 	}
 	@Override
 	public List<Course> viewCourse() {
