@@ -2,8 +2,8 @@ package com.elearning.dto;
 
 import java.util.Set;
 
+
 import com.elearning.model.Assignment;
-import com.elearning.model.Chapter;
 import com.elearning.model.InterviewQuestion;
 import com.elearning.model.PracticeTest;
 import com.elearning.model.Video;
@@ -38,8 +38,8 @@ public class TopicDTO {
 	
 
 	
-	 @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
-	    private Set<Chapter> chapters;
+//	 @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
+//	    private Set<Chapter> chapters;
 
 	public TopicDTO(String topicName, Set<InterviewQuestion> interviewQuestions, Set<Assignment> assignments,
 			Set<Video> videos, Set<com.elearning.model.PracticeTest> practiceTest) {

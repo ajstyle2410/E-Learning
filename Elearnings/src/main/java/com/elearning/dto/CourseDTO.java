@@ -2,13 +2,8 @@ package com.elearning.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.elearning.model.Chapter;
-
-import com.elearning.model.FacultyProfile;
-import com.elearning.model.UserCourse;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

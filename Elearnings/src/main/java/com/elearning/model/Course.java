@@ -1,18 +1,26 @@
 package com.elearning.model;
 
+import java.util.Set;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Course {
 	@Id
@@ -47,13 +55,18 @@ public class Course {
 	@OneToOne(mappedBy = "course")
 	private UserCourse userCourse;
 
-	@OneToOne(mappedBy = "course")
-	private Chapter chapter;
-
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "course_id", referencedColumnName = "course_id")
+	private Course course;
+//@OneToOne(mappedBy="course")
+//private Chapter chapter;
+//	
+//@OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+//private Set<Chapter> chapters;
+	
 	public Course( String courseName, int fees, int noOfHours, String banner, String objective,
 			String prerequisites, String type, String path) {
 		super();
-		this.courseId = courseId;
 		this.courseName = courseName;
 		this.fees = fees;
 		this.noOfHours = noOfHours;
@@ -64,6 +77,7 @@ public class Course {
 		Path = path;
 
 	}
+
 
 
 }

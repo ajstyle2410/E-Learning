@@ -1,8 +1,5 @@
  <link th:href="@{./css/addCourse.css}" rel="stylesheet" />
-       
-      
-       
-       
+   
        <body class="d-flex">
                           <div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
             
@@ -49,7 +46,11 @@
                 <div class="col-6">
                     <div class="input-container">
                         <label for="type">Course Type</label>
-                        <input type="text" placeholder="Enter Course Type" name="type">
+                        <select class="form-select" aria-label="Default select example" name="type">
+  <option selected>Open this select menu</option>
+  <option value="Free">Free</option>
+  <option value="Paid">Paid</option>
+</select>
                     </div>
                 </div>
                 <div class="col-12">

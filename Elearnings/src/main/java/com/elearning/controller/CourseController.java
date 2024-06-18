@@ -62,13 +62,7 @@ public class CourseController {
 	@GetMapping("courselist")
 	public ModelAndView viewCourse(Model map) {
 		List<Course>  list = courseServiceInterface.viewCourse();
-		
-		 for (Iterator<Course> iterator = list.iterator(); iterator.hasNext();) {
-			Course c = (Course) iterator.next();
-			System.out.println(c.toString());
-			
-		}
-		
+	
 		map.addAttribute("list", list);
 		
 		return new ModelAndView("viewCourse");

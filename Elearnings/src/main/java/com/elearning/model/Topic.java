@@ -39,17 +39,16 @@ public class Topic {
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
     private Set<PracticeTest> PracticeTest;
 
-    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
-    private Set<Chapter> chapters;
+//    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
+//    private Set<Chapter> chapters;
 
     public Topic(String topicName, Set<InterviewQuestion> interviewQuestions, Set<Assignment> assignments,
-                 Set<Video> videos, Set<PracticeTest> practiceTest, Set<Chapter> chapters) {
+                 Set<Video> videos, Set<PracticeTest> practiceTest) {
         super();
         this.topicName = topicName;
         this.interviewQuestions = interviewQuestions;
         this.assignments = assignments;
         this.videos = videos;
         PracticeTest = practiceTest;
-        this.chapters = chapters;
     }
 }
