@@ -23,10 +23,9 @@ import com.elearning.service.CourseServiceInterface;
 @RestController
 public class ChapterController {
 
-	
 	@Autowired
- private	ChapterServiceInterface chapterServiceInterface;
-	
+	private ChapterServiceInterface chapterServiceInterface;
+
 	@Autowired
 	private CourseServiceInterface courseServiceInterface;
 
@@ -38,40 +37,53 @@ public class ChapterController {
 		map.addAttribute("list", list);
 		return new ModelAndView("addChapter");
 	}
-	
+
 	@PostMapping("/uploadchapter")
-	  public ModelAndView viewChapter(@RequestPart("file") MultipartFile file, @RequestParam("courseId") String courseId) {
-        
+	public ModelAndView viewChapter(@RequestPart("file") MultipartFile file,
+			@RequestParam("courseId") String courseId) {
 
 		String msg = chapterServiceInterface.addChpaters(file, Long.parseLong(courseId));
-	  System.out.println(msg);
-		return  new ModelAndView("addChapter");
+		System.out.println(msg);
+		return new ModelAndView("addChapter");
+
+	}
+
+	@GetMapping("viewByIdChapter")
+
+	public ModelAndView viewIdByChapter(ModelMap map) {
+		List<Course> list = new ArrayList<Course>();
+
+		System.err.println("@@@@@@@@@@@@@@");
 		
-	   }
-	
-		/*
-		 * @GetMapping("viewByIdChapter") public ModelAndView viewIdByChapter(ModelMap
-		 * map) { List<Course> list = new ArrayList<Course>();
-		 * 
-		 * list = courseServiceInterface.viewCourse();
-		 * 
-		 * map.addAttribute("list", list);
-		 * 
-		 * return new ModelAndView("viewChapter"); }
-		 */
-	
-	@PostMapping("viewChapters")
-	  public ModelAndView viewCourseWiseChapters(ModelMap map, @RequestParam("CourseId") long CourseId)
-	  {
+		list = courseServiceInterface.viewCourse();
 		
-		List<Chapter> list = chapterServiceInterface.viewCourseWiseChapters(CourseId);
+		System.out.println("#####################"+list);
 		
-		  for (Iterator<Chapter> iterator = list.iterator(); iterator.hasNext();) {
-			Chapter chapter = (Chapter) iterator.next();
-			 System.err.println(chapter.getCourse().getCourseId());
+		 for (Iterator<Course> iterator = list.iterator(); iterator.hasNext();) {
+			Course course = (Course) iterator.next();
+			
+			System.err.println(course.getCourseName());
 		}
-		return  new ModelAndView("viewChapter");
+
+		map.addAttribute("list", list);
+
+		return new ModelAndView("viewChapter");
+	}
+
+	@PostMapping("viewChapters")
+	public ModelAndView viewCourseWiseChapters(ModelMap map, @RequestParam("courseId") long courseId) {
+
+		List<Chapter> list = chapterServiceInterface.viewCourseWiseChapters(courseId);
+
+		for (Iterator<Chapter> iterator = list.iterator(); iterator.hasNext();) {
+			Chapter chapter = (Chapter) iterator.next();
+			System.err.println(chapter.getCourse().getCourseId());
+		}
+
+		map.addAttribute("list", list);
 		
-	  }
+		return new ModelAndView("redirect:viewByIdChapter");
+
+	}
 
 }

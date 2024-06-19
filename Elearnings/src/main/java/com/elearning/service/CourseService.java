@@ -49,7 +49,7 @@ public class CourseService implements CourseServiceInterface {
 
 		for (Iterator<Course> iterator = list.iterator(); iterator.hasNext();) {
 			Course course = (Course) iterator.next();
-
+  System.err.println("Course Service :"+course.getCourseName());
 		}
 		return list;
 

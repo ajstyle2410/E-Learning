@@ -23,4 +23,40 @@
 			
 			</div>
 		</div>
+		
+	
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center ">
+				<table
+					summary="This table shows how to create responsive tables using Datatables' extended functionality"
+					class="table table-bordered table-hover dt-responsive">
+					<thead>
+						<tr>
+							<th>#</th>
+				
+							<th>Chapter Name</th>
+							<th>Course Id </th>
+						
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="im : ${list}" th:if="${im.ChapterName}" class="text-center">
+							<td th:text=${im.ChapterId}></td>
+
+							<td th:text=${im.ChapterName}></td>
+						</tr>
+					</tbody>
+					<tfoot>
+
+					</tfoot>
+				</table>
+			</div>
+		</div>
 	</div>
+	<script>
+		$('table').DataTable();
+	</script>
+	</div> 
