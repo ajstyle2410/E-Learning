@@ -12,6 +12,9 @@ public interface ChapterServiceInterface {
 
 
 	public List<Chapter> viewCourseWiseChapters(long courseId);
+
+
+	public List<Chapter> viewChapters();
 	
 
 }
