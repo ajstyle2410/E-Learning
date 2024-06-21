@@ -100,12 +100,12 @@ border-radius: 50%;
     background: #fff;
     border-radius: 10px;
     margin-bottom: 1rem;
-    padding: 10px 2rem;
 
 }
 
 .header--title{
     color: rgba(113, 99, 186, 255);
+    
 }
 
 .user-info{
@@ -134,4 +134,12 @@ border-radius: 50%;
 }
 .search--box i:hover{
     transform: scale(1.2);
+}
+
+.header{
+	position:absolute;
+	top:0%;
+	background-color:red;
+	width:100vw;
+	
 }
