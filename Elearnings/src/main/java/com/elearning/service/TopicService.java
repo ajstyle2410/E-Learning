@@ -15,7 +15,7 @@ public class TopicService implements TopicServiceInterface{
 	@Override
 	public String addTopic(TopicDTO topicDTO) {
 		
-		  Topic topic = new Topic(topicDTO.getTopicName(), topicDTO.getInterviewQuestions(), topicDTO.getAssignments(), topicDTO.getVideos(), topicDTO.getPracticeTest());
+		  Topic topic = new Topic(topicDTO.getTopicName(), topicDTO.getInterviewQuestions(), topicDTO.getAssignments(), topicDTO.getVideos(), topicDTO.getPracticeTest(), null);
 	
 		   try {
 		 topicRepository.save(topic);
