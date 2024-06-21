@@ -38,10 +38,7 @@ public class ChapterService implements ChapterServiceInterface {
 	public String addChpaters(MultipartFile file, long courseId) {
 
 		Set<Chapter> chapters = parseCSV(file, courseId);
-		 for (Iterator<Chapter> iterator = chapters.iterator(); iterator.hasNext();) {
-			Chapter chapter = (Chapter) iterator.next();
-					}
-		
+
 		if (!chapters.isEmpty()) {
 			chapterRepository.saveAll(chapters);
 			return "Chapters added successfully";
@@ -66,7 +63,6 @@ public class ChapterService implements ChapterServiceInterface {
 				Chapter chapter = Chapter.builder().ChapterName(data.getChapterName()).course(course).build();
 				chapters.add(chapter);
 			}
-
 			return chapters;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,17 +74,18 @@ public class ChapterService implements ChapterServiceInterface {
 	public List<Chapter> viewCourseWiseChapters(long CourseId) {
 		List<Chapter > chapter = new ArrayList<Chapter>();
 		
-		 System.out.println("@@@@@@@@@@@@@@@@@@");
 		
            chapter=  chapterRepository.findAll();
-           
-            
-            for (Iterator iterator = chapter.iterator(); iterator.hasNext();) {
-				Chapter c = (Chapter) iterator.next();
-				 System.out.println(c.getChapterName());
-			}
-           
+    
             return chapter;
+	}
+
+	@Override
+	public List<Chapter> viewChapters() {
+		
+		         
+		
+		return  chapterRepository.findAll();
 	}
 
 }

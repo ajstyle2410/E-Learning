@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -32,9 +33,12 @@ public class ChapterController {
 	@GetMapping("addChapters")
 	public ModelAndView addChapter(Model map) {
 
-		List<Course> list = courseServiceInterface.viewCourse();
+		 List<Course> list = courseServiceInterface.viewCourse();
+	        List<Chapter> chapters = chapterServiceInterface.viewChapters();
 
-		map.addAttribute("list", list);
+	        map.addAttribute("list", list);
+	        map.addAttribute("chapters", chapters);
+	        map.addAttribute("cId", 0);  // Default value for initial load
 		return new ModelAndView("addChapter");
 	}
 
@@ -53,37 +57,26 @@ public class ChapterController {
 	public ModelAndView viewIdByChapter(ModelMap map) {
 		List<Course> list = new ArrayList<Course>();
 
-		System.err.println("@@@@@@@@@@@@@@");
-		
 		list = courseServiceInterface.viewCourse();
-		
-		System.out.println("#####################"+list);
-		
-		 for (Iterator<Course> iterator = list.iterator(); iterator.hasNext();) {
-			Course course = (Course) iterator.next();
-			
-			System.err.println(course.getCourseName());
-		}
 
 		map.addAttribute("list", list);
 
 		return new ModelAndView("viewChapter");
 	}
+	
 
 	@PostMapping("viewChapters")
-	public ModelAndView viewCourseWiseChapters(ModelMap map, @RequestParam("courseId") long courseId) {
+	public ModelAndView viewCourseWiseChapters(ModelMap map, @RequestParam("courseId") Integer  courseId) {
+		  System.out.println("@@@@@@@@@ " + courseId);
 
-		List<Chapter> list = chapterServiceInterface.viewCourseWiseChapters(courseId);
+	        List<Course> list = courseServiceInterface.viewCourse();
+	        List<Chapter> chapters = chapterServiceInterface.viewCourseWiseChapters(courseId);
 
-		for (Iterator<Chapter> iterator = list.iterator(); iterator.hasNext();) {
-			Chapter chapter = (Chapter) iterator.next();
-			System.err.println(chapter.getCourse().getCourseId());
-		}
+	        map.addAttribute("list", list);
+	        map.addAttribute("chapters", chapters);
+	        map.addAttribute("cId", courseId);
 
-		map.addAttribute("list", list);
-		
-		return new ModelAndView("redirect:viewByIdChapter");
-
+		return new ModelAndView("viewChapter");
 	}
 
 }
