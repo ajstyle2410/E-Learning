@@ -1,5 +1,9 @@
 package com.elearning.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.elearning.dto.InterviewQuestionDTO;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,10 +12,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
 public class InterviewQuestion {
 
     @Id
@@ -28,12 +35,6 @@ public class InterviewQuestion {
     @JoinColumn(name = "topic_id", nullable = false)
     private Topic topic;
 
-	public InterviewQuestion(String question, String description, Topic topic) {
-		super();
-		this.question = question;
-		this.description = description;
-		this.topic = topic;
-	}
     
     
 }
