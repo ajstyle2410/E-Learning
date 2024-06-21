@@ -1,0 +1,38 @@
+	<div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
+
+	<h1>heelo</h1>
+   
+          		  
+          		  
+          		  <table
+					summary="This table shows how to create responsive tables using Datatables' extended functionality"
+					class="table table-bordered table-hover dt-responsive">
+					<thead>
+						<tr>
+							<th>#</th>
+				
+							<th>Course Name</th>
+							<th>Banner </th>
+							<th>Banner Image</th>
+							<th>Fees</th>
+							<th>Hours</th>
+							<th>Objective</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="im : ${lists}" class="text-center">
+							<td th:text=${im.ChapterName}></td>
+
+						
+
+
+
+
+						</tr>
+
+
+					</tbody>
+					<tfoot>
+
+					</tfoot>
+				</table>
