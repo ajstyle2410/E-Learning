@@ -1,43 +1,44 @@
 <div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
 
 <div class="container mt-5">
-    <div class="card">
-        <div class="card-header">
-            Featured
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <form th:action="@{/findByCourseId}" th:method="post">
-                    <div class="col-8">
-                        <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="courseId">
-                            <option disabled selected>Select the course</option>
-                            <option th:each="list : ${list}" th:value="${list.courseId}" th:text="${list.courseName}"></option>
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-outline-success btn-lg">Submit</button>
-                    </div>
-                </form>
-                <div class="col-12">
-                    <h1 th:text="${cId}"></h1>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="list : ${chapters}" th:if="${list.course.courseId == cId}">
-                                <th scope="row" th:text="${list.chapterId}"></th>
-                                <td th:text="${list.chapterName}"></td>
-                                <td><a href="#">link</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-header">Featured</div>
+		<div class="card-body">
+			<div class="row">
+				<form th:action="@{/findByCourseId}" th:method="post">
+					<div class="col-8">
+						<select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="courseId" id="courseId">
+							<option disabled selected>Select the course</option>
+							<option th:each="list : ${list}" th:value="${list.courseId}"
+								th:text="${list.courseName}"></option>
+						</select>
+					</div>
+					<div class="col-4">
+						<button type="submit" class="btn btn-outline-success btn-lg">Submit</button>
+					</div>
+				</form>
+				<div class="col-12">
+					<h1 th:text="${cId}"></h1>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Chapter Name</th>
+								<th scope="col">Add Topic</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="list : ${chapters}"
+								th:if="${list.course.courseId == cId}">
+								<th scope="row" th:text="${list.chapterId}"></th>
+								<td th:text="${list.chapterName}"></td>
+								 <td><a th:href="@{'/addTopics/' + ${list.chapterId}}">add Topic</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

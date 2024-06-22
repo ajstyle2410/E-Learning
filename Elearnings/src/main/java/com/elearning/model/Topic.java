@@ -34,7 +34,7 @@ public class Topic {
     private Set<Assignment> assignments;
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
-    private Set<Video> videos;
+	public Set<Video> videos;
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
     private Set<PracticeTest> PracticeTest;
@@ -43,16 +43,12 @@ public class Topic {
 	@JoinColumn(name = "chapter_id", nullable=false)
 	private Chapter chapters;
 
-public Topic(String topicName, Set<InterviewQuestion> interviewQuestions, Set<Assignment> assignments,
-		Set<Video> videos, Set<com.elearning.model.PracticeTest> practiceTest, Chapter chapters) {
+public Topic(String topicName ,Chapter chapters) {
 	super();
 	this.topicName = topicName;
-	this.interviewQuestions = interviewQuestions;
-	this.assignments = assignments;
-	this.videos = videos;
-	PracticeTest = practiceTest;
 	this.chapters = chapters;
 }
+
 
     
 }
