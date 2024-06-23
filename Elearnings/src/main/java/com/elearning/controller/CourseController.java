@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +36,6 @@ public class CourseController {
 			@RequestParam("noOfHours") int noOfHours, @RequestParam("prerequisites") String prerequisites,
 			@RequestParam("banner") MultipartFile banner, @RequestParam("type") String type,
 			@RequestParam("objective") String objective) throws IOException {
-		// Save the file to the local filesystem
 		byte[] bytes = banner.getBytes();
 		File dir = new File(COURSE_IMAGE_PATH);
 		if (!dir.exists()) {
@@ -42,8 +43,6 @@ public class CourseController {
 		}
 		File file = new File(COURSE_IMAGE_PATH + banner.getOriginalFilename());
 		banner.transferTo(file);
-
-		// Convert DTO to entity
 		CourseDTO course = new CourseDTO();
 		course.setCourseName(courseName);
 		course.setFees(fees);
@@ -67,4 +66,15 @@ public class CourseController {
 		
 		return new ModelAndView("viewCourse");
 	}
+	
+	@GetMapping("deleteCourse/{courseId}")
+	  public ModelAndView deleteCourse(@PathVariable("courseId") long courseId)
+	  {
+		  
+		 String msg =    courseServiceInterface.deleteCourseById(courseId);
+		
+		   System.out.println(msg);
+		 
+		 return new  ModelAndView("redirect:courselist");
+	  }
 }

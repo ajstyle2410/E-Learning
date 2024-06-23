@@ -1,23 +1,5 @@
-  $(document).ready(function() {
-  
-  alert("hello")
-  
-    $('#example').DataTable(
-        
-         {     
 
-      "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
-        "iDisplayLength": 5
-       } 
-        );
-} );
+	<script>
+		$('table').DataTable();
+	</script>
 
-
-function checkAll(bx) {
-  var cbs = document.getElementsByTagName('input');
-  for(var i=0; i < cbs.length; i++) {
-    if(cbs[i].type == 'checkbox') {
-      cbs[i].checked = bx.checked;
-    }
-  }
-}

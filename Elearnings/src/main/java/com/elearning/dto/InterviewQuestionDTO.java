@@ -18,17 +18,17 @@ public class InterviewQuestionDTO {
     @Column(columnDefinition = "TEXT")
     private String question;
 
-     private MultipartFile file;
+   //  private MultipartFile file;
     
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    private Integer  topicId;
+    private Integer   topicId;
 
-	public InterviewQuestionDTO(String question, MultipartFile file, String description, Integer topicId) {
+	public InterviewQuestionDTO(String question,  String description, Integer  topicId) {
 		super();
 		this.question = question;
-		this.file = file;
+		//this.file = file;
 		this.description = description;
 		this.topicId = topicId;
 	}

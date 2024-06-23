@@ -17,8 +17,6 @@ import lombok.Builder;
 import lombok.Data;
 @Data
 @Entity
-@Builder
-@AllArgsConstructor
 public class InterviewQuestion {
 
     @Id
@@ -34,6 +32,13 @@ public class InterviewQuestion {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "topic_id", nullable = false)
     private Topic topic;
+
+	public InterviewQuestion(String question, String description, Topic topic) {
+		super();
+		this.question = question;
+		this.description = description;
+		this.topic = topic;
+	}
 
     
     

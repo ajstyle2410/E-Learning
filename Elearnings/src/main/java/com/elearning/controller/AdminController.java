@@ -9,7 +9,6 @@ public class AdminController {
 
     @GetMapping("/admin")
     public ModelAndView viewAdminDashboard() {
-        System.out.println("*********************************************************************");
         return new ModelAndView("admin");
     }
     

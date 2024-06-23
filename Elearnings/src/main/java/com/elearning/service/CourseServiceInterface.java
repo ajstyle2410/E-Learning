@@ -11,5 +11,7 @@ public  interface  CourseServiceInterface {
 
 public  List<Course> viewCourse();
 
+public String deleteCourseById(long courseId);
+
 
 }

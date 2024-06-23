@@ -3,13 +3,10 @@ package com.elearning.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.elearning.dto.CourseDTO;
 import com.elearning.model.Course;
-import com.elearning.model.FacultyProfile;
 import com.elearning.repository.CourseRepository;
 import com.elearning.repository.FacultyProfileRepository;
 
@@ -33,7 +30,6 @@ public class CourseService implements CourseServiceInterface {
 					course.getBanner().getOriginalFilename(), course.getObjective(), course.getPrerequisites(),
 					course.getType(), course.getPath());
 
-			System.err.println(courses.toString());
 			courseRepository.save(courses);
 			return courses.getCourseName();
 		} catch (Exception ex) {
@@ -42,17 +38,27 @@ public class CourseService implements CourseServiceInterface {
 
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public List<Course> viewCourse() {
 		List<Course> list = new ArrayList<Course>();
 		list = courseRepository.findAll();
 
-		for (Iterator<Course> iterator = list.iterator(); iterator.hasNext();) {
-			Course course = (Course) iterator.next();
-  System.err.println("Course Service :"+course.getCourseName());
-		}
 		return list;
 
+	}
+
+	@Override
+	public String deleteCourseById(long courseId) {
+		  try {
+		courseRepository.deleteById(courseId);
+		
+		 return courseId+" Delete id Successfully.........";
+		  }catch (Exception e) {
+
+		   System.out.println(e);
+		  }
+		return courseId+" Not deleted..........";
 	}
 
 }

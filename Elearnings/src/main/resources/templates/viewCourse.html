@@ -1,23 +1,6 @@
 
 	<div th:insert="~{../templates/admin.html}"></div>
 
-
-
-	<!-- <section>
-		<div class="row">
-			<div class="col-md-3" th:each="im : ${list}">
-				<div class="card">
-					<div class="card-body">
-						<div th:text=${im.banner}></div>
-						<img th:src="@{'/uploads/' + ${im.banner}}" width="100%"
-							height="auto" alt="Course Banner" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 text-center ">
@@ -34,6 +17,7 @@
 							<th>Fees</th>
 							<th>Hours</th>
 							<th>Objective</th>
+								<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -50,6 +34,12 @@
 							<td th:text=${im.fees}></td>
 							<td th:text=${im.noOfHours}></td>
 							<td th:text=${im.objective}></td>
+							<td >
+							<div class="d-flex gap-2">
+							       <a href="#" class="item">update</a>
+							       <a th:href="@{'/deleteCourse/' + ${im.courseId}}">Delete</a>
+							</div>
+							</td>
 
 
 

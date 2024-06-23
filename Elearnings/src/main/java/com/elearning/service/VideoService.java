@@ -2,9 +2,8 @@ package com.elearning.service;
 
 
 import com.elearning.model.Chapter;
-import com.elearning.model.Topic;
+
 import com.elearning.model.Video;
-import com.elearning.repository.TopicRepository;
 import com.elearning.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +16,6 @@ public class VideoService implements VideoServiceInterface {
 	@Autowired
 	private VideoRepository videoRepository;
 
-	 @Autowired
-	 private TopicRepository topicRepository;
-	
 	@Override
 	public String addVideo(Video video) {
 		try {

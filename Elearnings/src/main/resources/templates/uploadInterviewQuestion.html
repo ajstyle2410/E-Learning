@@ -1,0 +1,34 @@
+<div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
+
+<div class="card">
+	<h5 class="card-header">Interview Question Details</h5>
+	<div class="card-body">
+
+        <form th:action="@{/uploadedQuestion}" th:method="post">
+		<div class="row gap-3">
+			<div class="col-12">
+				<label>Interview Question</label> <input type="text"
+					class="form-control" placeholder="enter interview question"
+					aria-label="Username" aria-describedby="basic-addon1"  name="question">
+
+
+			</div>
+			<div class="col-12">
+				<label>Interview Question Solution Description</label> <input
+					type="text" class="form-control" placeholder="question solution"
+					aria-label="Username" aria-describedby="basic-addon1" name="description">
+			</div>
+			<div class="col-12">
+						  <input  type="text"  th:value="${topicId}"  class="form-control" aria-describedby="basic-addon1" name="topicId">
+			
+			</div>
+			<div class="col-12">
+			
+				<button class="btn btn-primary" type="submit">Submit</button>
+			</div>
+		</div>
+		</form>
+
+	</div>
+</div>
+

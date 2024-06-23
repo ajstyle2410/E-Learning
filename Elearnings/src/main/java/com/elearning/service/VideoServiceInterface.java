@@ -2,9 +2,8 @@ package com.elearning.service;
 
 import java.util.List;
 
-import com.elearning.dto.VideoDTO;
+
 import com.elearning.model.Chapter;
-import com.elearning.model.Topic;
 import com.elearning.model.Video;
 
 public interface VideoServiceInterface {

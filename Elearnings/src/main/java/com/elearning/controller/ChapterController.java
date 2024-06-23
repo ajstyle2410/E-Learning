@@ -38,7 +38,7 @@ public class ChapterController {
 
 	        map.addAttribute("list", list);
 	        map.addAttribute("chapters", chapters);
-	        map.addAttribute("cId", 0);  // Default value for initial load
+	        map.addAttribute("cId", 0); 
 		return new ModelAndView("addChapter");
 	}
 

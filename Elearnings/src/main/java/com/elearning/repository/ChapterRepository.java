@@ -7,8 +7,9 @@ import org.springframework.data.repository.query.Param;
 import com.elearning.model.Chapter;
 
 public interface ChapterRepository extends JpaRepository<Chapter, Long> {
-	
-//    @Query(nativeQuery = true, value = "SELECT * FROM Chapter WHERE course_id = :courseId")
-//    List<Chapter> findByCourseId(@Param("courseId") long courseId);
-    
+
+	@Query("select  c from Chapter c where c.course.courseId=:courseId")
+	List<Chapter> findByCourseWiseId(@Param("courseId") long courseId);
+
 }
+

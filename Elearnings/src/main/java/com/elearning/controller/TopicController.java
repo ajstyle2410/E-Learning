@@ -53,7 +53,6 @@ public class TopicController {
 
 	@PostMapping("findByCourseId")
 	public ModelAndView findByCourseIdRecords(@RequestParam("courseId") long courseId, ModelMap map) {
-		System.out.println("@@@@@@@@@ " + courseId);
 
 		List<Course> list = courseServiceInterface.viewCourse();
 		List<Chapter> chapters = chapterServiceInterface.viewCourseWiseChapters(courseId);
