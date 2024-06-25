@@ -11,5 +11,6 @@ public interface ChapterRepository extends JpaRepository<Chapter, Long> {
 	@Query("select  c from Chapter c where c.course.courseId=:courseId")
 	List<Chapter> findByCourseWiseId(@Param("courseId") long courseId);
 
+
 }
 

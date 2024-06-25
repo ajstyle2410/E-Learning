@@ -70,15 +70,7 @@ public class ChapterService implements ChapterServiceInterface {
 		}
 	}
 
-	@Override
-	public List<Chapter> viewCourseWiseChapters(long CourseId) {
-		List<Chapter > chapter = new ArrayList<Chapter>();
-		
-		
-           chapter=  chapterRepository.findAll();
-    
-            return chapter;
-	}
+
 
 	@Override
 	public List<Chapter> viewChapters() {
@@ -86,6 +78,11 @@ public class ChapterService implements ChapterServiceInterface {
 		         
 		
 		return  chapterRepository.findAll();
+	}
+
+	@Override
+	public List<Chapter> viewCourseWiseChapters(long courseId) {
+		return chapterRepository.findByCourseWiseId(courseId);
 	}
 
 }

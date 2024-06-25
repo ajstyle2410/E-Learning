@@ -1,0 +1,77 @@
+
+
+	<div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
+
+	<div class="container pb-5">
+		<div class="card">
+			<div class="card-header">Featured</div>
+			<div class="card-body">
+				<h5 class="card-title">Special title treatment</h5>
+				<!--                                                     <form th:action="@{/uploadInterviewQuestions}" enctype="multipart/form-data" th:method="post">
+ -->
+				<div class="row">
+
+					<div class="col-6">
+						<select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="courseId" id="courseId"
+							onchange="viewUploadCourseId()">
+							<option disabled selected>Select the course</option>
+							<option th:each="list : ${lists}" th:value="${list.courseId}"
+								th:text="${list.courseName}"></option>
+						</select>
+					</div>
+
+					<div class="col-6">
+						<select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="chapterId" id="chapterId"
+							onChange="viewUploadChapterId()">
+							<option disabled selected>Select the chapter</option>
+							<option th:each="list : ${list}" th:value="${list.ChapterId}"
+								th:text="${list.ChapterName}"></option>
+						</select>
+					</div>
+
+          <div class="12">
+						<select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="topicId" id="topicId"
+							onChange="UploadTopicId()">
+							<option disabled selected>Select the Topic</option>
+							<option th:each="list : ${topic}" th:value="${list.TopicId}"
+								th:text="${list.topicName}"></option>
+						</select>
+          
+          
+          </div>
+
+					<div class="col-12">
+
+
+                   	<table
+						summary="This table shows how to create responsive tables using Datatables' extended functionality"
+						class="table table-bordered table-hover dt-responsive">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Interview Question Name</th>
+								<th scope="col">Add Topic</th>
+							</tr>
+						</thead>
+						<tbody>
+							 <tr th:each="list : ${InterviewQuestion}">
+							 	<th scope="row" th:text="${list.interviewQuestionId}"></th>
+								<th scope="row" th:text="${list.question}"></th>
+							<th scope="row" th:text="${list.description}"></th>
+							
+							</tr> 
+						</tbody>
+					</table>
+
+
+</div>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+		<script th:src="@{/js/InterviewQuestions.js}"></script>
+	

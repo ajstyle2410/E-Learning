@@ -52,6 +52,15 @@ public class InterviewController {
 		return new ModelAndView("addInterviewQuestion");
 	}
 
+	@GetMapping("viewInterviewQuestion")
+	public ModelAndView viewInterviewQuestions(ModelMap map) {
+		List<Course> lists = courseServiceInterface.viewCourse();
+
+		map.addAttribute("lists", lists);
+		map.addAttribute("cId", 0);
+		return new ModelAndView("viewInterviewQuestion");
+	}
+
 	@GetMapping("/uploadCourseIds/{courseId}")
 	public ModelAndView uploadCourseId(@PathVariable long courseId, ModelMap map) {
 
@@ -62,6 +71,48 @@ public class InterviewController {
 		map.addAttribute("lists", lists);
 		return new ModelAndView("addInterviewQuestion");
 	}
+
+	// view Chpaters for ViewInterview Question
+
+	@GetMapping("/uploadCoursesId/{courseId}")
+	public ModelAndView uploadCoursesId(@PathVariable long courseId, ModelMap map) {
+
+		System.out.println("course id is ----------------------> " + courseId);
+
+		List<Chapter> chapter = interviewQuestionInterface.finedCourseIdWiseRecords(courseId);
+
+		map.addAttribute("list", chapter);
+
+		List<Course> lists = courseServiceInterface.viewCourse();
+		map.addAttribute("lists", lists);
+		return new ModelAndView("addInterviewQuestion");
+	}
+
+	// view Chpater wise topics
+	/*
+	 * @GetMapping("viewUplodChapterIds/{chapterId}") public ModelAndView
+	 * uploadChapterWiseTopicQuestions(@PathVariable long chapterId, ModelMap model)
+	 * {
+	 * 
+	 * 
+	 * System.out.println("Chapter id is ======>"+chapterId);
+	 * 
+	 * 
+	 * List<Course> lists = courseServiceInterface.viewCourse();
+	 * model.addAttribute("lists", lists); List<Topic> topic =
+	 * topicServiceInterface.viewChapterWiseSTopics(chapterId);
+	 * 
+	 * for (Iterator<Topic> iterator = topic.iterator(); iterator.hasNext();) {
+	 * Topic t = (Topic) iterator.next();
+	 * 
+	 * System.err.println("****************************"+t.getTopicName()); }
+	 * 
+	 * model.addAttribute("topic", topic); return new
+	 * ModelAndView("viewInterviewQuestion");
+	 * 
+	 * }
+	 * 
+	 */
 
 	@GetMapping("uplodChapterIds/{chapterId}")
 	public ModelAndView uploadChapterWiseTopicQuestion(@PathVariable long chapterId, ModelMap model) {
@@ -78,6 +129,23 @@ public class InterviewController {
 
 	}
 
+	// getViewChapter Id
+
+	@GetMapping("viewChapterIds/{chapterId}")
+	public ModelAndView viewChapterWiseTopicQuestion(@PathVariable long chapterId, ModelMap model) {
+
+		System.out.println("***************> chapter id is " + chapterId);
+
+		List<Course> lists = courseServiceInterface.viewCourse();
+		model.addAttribute("lists", lists);
+		List<Topic> topic = topicServiceInterface.viewChapterWiseSTopics(chapterId);
+
+		model.addAttribute("topic", topic);
+
+		return new ModelAndView("viewInterviewQuestion");
+
+	}
+
 	@GetMapping("/uploadQuestionTopic/{topicId}")
 	public ModelAndView AddInterviewQuestion(@PathVariable long topicId, ModelMap map) {
 
@@ -87,26 +155,54 @@ public class InterviewController {
 
 		return new ModelAndView("uploadInterviewQuestion");
 	}
-	
-	
+
+//	// viewInteriveQuestions
+//
+//	@GetMapping("/uploadQuestionTopics/{topicId}")
+//	public ModelAndView viewInterviewQuestions(@PathVariable long topicId, ModelMap map) {
+//
+//		System.out.println("topic id is " + topicId);
+//
+//		List<InterviewQuestion> interviewQuestion = interviewQuestionInterface.viewInterviewQuestionByTopicId(topicId);
+//
+//		map.addAttribute("topicId", topicId);
+//
+//		return new ModelAndView("viewInterviewQuestion");
+//	}
+
+	// view by Topic Id wise
+
+	@GetMapping("/viewInterviewQuestionByTopicId/{topicId}")
+	public ModelAndView viewInterviewQuestionByTopicId(@PathVariable("topicId") long topicId,ModelMap map) {
+		
+		 System.out.println("======> Topic Id is :"+topicId);
+			List<InterviewQuestion> interviewQuestion = interviewQuestionInterface.viewInterviewQuestionByTopicId(topicId);
+
+			 
+			
+			map.addAttribute("InterviewQuestion", interviewQuestion);
+		 
+		
+		return new ModelAndView("viewInterviewQuestion");
+
+	}
+
 	@PostMapping("uploadedQuestion")
-	   public ModelAndView  getUploadQuestion(@RequestParam String question, @RequestParam String description, @RequestParam Integer  topicId)
-	    
-  //  public ModelAndView  getUploadQuestion(@RequestBody InterviewQuestionDTO dto)
+	public ModelAndView getUploadQuestion(@RequestParam String question, @RequestParam String description,
+			@RequestParam Integer topicId)
+
+	// public ModelAndView getUploadQuestion(@RequestBody InterviewQuestionDTO dto)
 
 	{
-		
-		  InterviewQuestionDTO dto = new InterviewQuestionDTO(description, description, topicId);
-		  
-		  interviewQuestionInterface.addInterviewQuestion(dto);
-		  
-			return new ModelAndView("uploadInterviewQuestion");
-		
-	    }
-	
 
-	
-	
+		InterviewQuestionDTO dto = new InterviewQuestionDTO(description, description, topicId);
+
+		interviewQuestionInterface.addInterviewQuestion(dto);
+
+		return new ModelAndView("uploadInterviewQuestion");
+
+	}
+
 	/*
 	 * 
 	 * @GetMapping("/uploadCourseIds/{courseId}") public ModelAndView

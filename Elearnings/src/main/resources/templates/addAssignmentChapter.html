@@ -1,0 +1,11 @@
+<link th:href="@{./css/index.css}" rel="stylesheet" />
+
+<div th:insert="~{../templates/index.html}"></div>
+ <select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="courseId" id="courseId"
+							>
+							<option disabled selected>Select the course</option>
+							<option th:each="list : ${chapters}" th:value="${list.ChapterId}"
+								th:text="${list.ChapterName}"></option>
+						</select>
+				

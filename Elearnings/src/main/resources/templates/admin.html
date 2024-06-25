@@ -1,83 +1,82 @@
 
-    <title>Admin Dashboard</title>
-    <link th:href="@{./css/index.css}" rel="stylesheet" />
+<title>Admin Dashboard</title>
+<link th:href="@{./css/index.css}" rel="stylesheet" />
 
-    <div th:insert="~{../templates/index.html}"></div>
+<div th:insert="~{../templates/index.html}"></div>
 
-    <div class="slidebar">
-        <div class="logo"></div>
-        <ul class="menu">
-            <li class="active">
-                <a href="admin">
-                    <i class="fa fa-tachometer" aria-hidden="true"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-             <li>
-                    <a href="#courseMenu" data-bs-toggle="collapse" aria-expanded="false">
-                        <i class="fa fa-book"></i>
-                        <span>Course</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="courseMenu">
-                        <li><a href="addcourse">New Course</a></li>
-                        <li><a href="/courselist">View Course</a></li>
-                    </ul>
-                </li>
-              <li>
-                    <a href="#courseChapter" data-bs-toggle="collapse" aria-expanded="false">
-                        <i class="fa fa-book"></i>
-                        <span>Add Chapter</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="courseChapter">
-                        <li><a href="addChapters	">New Chapter</a></li>
-                        <li><a href="viewByIdChapter">View Chapter</a></li>
-                    </ul>
-                </li>
-                     <li>
-                  <a href="#topic" data-bs-toggle="collapse" aria-expanded="false">
-                        <i class="fa fa-book"></i>
-                        <span>Add Topic</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="topic">
-                        <li><a href="topicPage">New Topic</a></li>
-                        <li><a href="viewVideo">View Topic</a></li>
-                    </ul>
-            </li>
-            <li>
-                 <a href="#courseInterviewQuestion" data-bs-toggle="collapse" aria-expanded="false">
-                        <i class="fa fa-book"></i>
-                        <span>Interview Question</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="courseInterviewQuestion">
-                        <li><a href="addInterviewQustion">New Interview Question</a></li>
-                        <li><a href="#">View Interview Question</a></li>
-                    </ul>
-                </li>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-file-code-o" aria-hidden="true"></i>
-                    <span>Assignments</span>
-                </a>
-            </li>
-       
-            <li>
-                <a href="#">
-                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
-                    <span>Test</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a href="#">
-                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+<div class="slidebar">
+	<div class="logo"></div>
+	<ul class="menu">
+		<li class="active"><a href="admin"> <i
+				class="fa fa-tachometer" aria-hidden="true"></i> <span>Dashboard</span>
+		</a></li>
+		<li><a href="#courseMenu" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Course</span>
+		</a>
+			<ul class="collapse list-unstyled" id="courseMenu">
+				<li><a href="addcourse">New Course</a></li>
+				<li><a href="/courselist">View Course</a></li>
+			</ul></li>
+		<li><a href="#courseChapter" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Add
+					Chapter</span>
+		</a>
+			<ul class="collapse list-unstyled" id="courseChapter">
+				<li><a href="addChapters	">New Chapter</a></li>
+				<li><a href="viewByIdChapter">View Chapter</a></li>
+			</ul></li>
+		<li><a href="#topic" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Add
+					Topic</span>
+		</a>
+			<ul class="collapse list-unstyled" id="topic">
+				<li><a href="topicPage">New Topic</a></li>
+				<li><a href="viewVideo">View Topic</a></li>
+			</ul></li>
+		<li><a href="#assignments" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Interview
+			</span>
+		</a>
+			<ul class="collapse list-unstyled" id="assignments">
+				<li><a href="addInterviewQustion">New Interview Question</a></li>
+				<li><a href="viewInterviewQuestion">View Interview Question</a></li>
+			</ul></li>
+		<li><a href="#courseInterviewQuestion" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Assinments
+			</span>
+		</a>
+			<ul class="collapse list-unstyled" id="courseInterviewQuestion">
+				<li><a href="assignmentpage">New Assignment</a></li>
+				<li><a href="#">View Assignments</a></li>
+			</ul></li>
+			<li><a href="#courseInterviewQuestion" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Practice Question
+			</span>
+		</a>
+			<ul class="collapse list-unstyled" id="courseInterviewQuestion">
+				<li><a href="assignmentpage">New Assignment</a></li>
+				<li><a href="#">View Assignments</a></li>
+			</ul></li>
+			<li><a href="#courseInterviewQuestion" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Faculty Profile
+			</span>
+		</a>
+			<ul class="collapse list-unstyled" id="courseInterviewQuestion">
+				<li><a href="assignmentpage">New Assignment</a></li>
+				<li><a href="#">View Assignments</a></li>
+			</ul></li>
+
+<li><a href="#courseInterviewQuestion" data-bs-toggle="collapse"
+			aria-expanded="false"> <i class="fa fa-book"></i> <span>Blog Question
+			</span>
+		</a>
+			<ul class="collapse list-unstyled" id="courseInterviewQuestion">
+				<li><a href="assignmentpage">New Assignment</a></li>
+				<li><a href="#">View Assignments</a></li>
+			</ul></li>
+
+		<li class="logout"><a href="#"> <i
+				class="fas fa-tachometer-alt" aria-hidden="true"></i> <span>Logout</span>
+		</a></li>
+	</ul>
+</div>

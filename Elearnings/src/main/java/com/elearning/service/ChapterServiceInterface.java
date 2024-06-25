@@ -10,11 +10,9 @@ public interface ChapterServiceInterface {
 
 	public String  addChpaters(MultipartFile file, long  courseId);
 
+	public List<Chapter> viewChapters();
 
 	public List<Chapter> viewCourseWiseChapters(long courseId);
-
-
-	public List<Chapter> viewChapters();
 	
 
 }
