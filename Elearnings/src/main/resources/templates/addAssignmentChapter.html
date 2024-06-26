@@ -2,10 +2,12 @@
 
 <div th:insert="~{../templates/index.html}"></div>
  <select class="form-select form-select-lg mb-3"
-							aria-label="Large select example" name="courseId" id="courseId"
+							aria-label="Large select example" name="chapterId" id="chapterId"   onchange="viewUploadChapterId()"
 							>
-							<option disabled selected>Select the course</option>
+							<option disabled selected>Select the Chapter</option>
 							<option th:each="list : ${chapters}" th:value="${list.ChapterId}"
 								th:text="${list.ChapterName}"></option>
 						</select>
+				<input type="hidden"  th:value="1" id="chapterId" />
 				
+				<script src="./js/Assignments.js"></script>

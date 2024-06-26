@@ -14,4 +14,5 @@ public interface TopicServiceInterface {
 	public List<Topic> viewChapterWiseSTopics(long chapterId);
 
 
+
 }
