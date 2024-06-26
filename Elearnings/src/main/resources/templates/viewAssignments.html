@@ -19,6 +19,9 @@
 							<option th:each="list : ${list}" th:value="${list.courseId}"
 								th:text="${list.courseName}"></option>
 						</select>
+						
+						
+						<input type="hidden" th:value="1" name="con" id="con">
       
       </div>
       
@@ -28,8 +31,7 @@
       </div>
       
        <div class="col-12">
-				    <div id="assignment"></div> <!-- This is where the table records will be displayed -->				
-
+				    <div id="viewAssignments"></div> <!-- This is where the table records will be displayed -->				
       </div>
       
     </div>

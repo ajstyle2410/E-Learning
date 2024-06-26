@@ -1,16 +1,13 @@
 package com.elearning.dto;
 
-import com.elearning.model.Topic;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Builder
 public class AssignmentDTO {
 
 	@Column(columnDefinition = "TEXT")

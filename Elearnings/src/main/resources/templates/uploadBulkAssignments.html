@@ -1,0 +1,47 @@
+
+<div th:insert="~{../templates/index.html}" ></div>
+
+<!-- <div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
+ -->
+<div class="container">
+	
+	
+	
+	<div class="card mt-5">
+	
+		<div class="card-header">Assignments Details</div>
+		<div class="card-body">
+
+			<div class="row">
+				<form th:action="@{/sendAssignment}" th:method="post" enctype="multipart/form-data">
+					<div class="col-6">
+						<span>Select Type of Assignments</span> <select
+							class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="Type">
+							<option disabled selected>Select the Type</option>
+							<option th:value="Practical">Practical Assignments</option>
+							<option th:value="Practical">Practice Assignments</option>
+
+						</select>
+					</div>
+					<div class="col-6">
+						<div class="text-header">
+							<h5>Upload Assignment File</h5>
+						</div>
+						<div class="input-group mb-3">
+
+							<input type="file" class="form-control"
+								aria-describedby="basic-addon1" name="file" />
+						</div>
+<!-- 						<input type="text"  th:value="${topicId}" name="topicId" />
+ -->					</div>
+					<div class="col-12">
+						<button type="submit" class="btn btn-primary">Upload</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+</div>

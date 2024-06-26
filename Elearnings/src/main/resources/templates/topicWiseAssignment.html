@@ -1,0 +1,39 @@
+<link th:href="@{./css/index.css}" rel="stylesheet" />
+
+<div th:insert="~{../templates/index.html}"></div>
+
+
+<table
+	summary="This table shows how to create responsive tables using Datatables' extended functionality"
+	class="table table-bordered table-hover dt-responsive" id="assignment">
+	<thead>
+		<tr>
+			<th>#</th>
+
+			<th>Topic Name</th>
+			<th>Add Assignments</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="im : ${topic}" class="text-center">
+			<td th:text=${im.topicId}></td>
+
+
+			<td th:text=${im.topicName}></td>
+			<td>
+				<ul class="nav nav-pills">
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{'/uploadBulkAssignments/' + ${im.topicId}}">Add
+							Bulk Assignments</a></li>
+				</ul>
+
+
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+
+	</tfoot>
+</table>
+
+<script src="./js/Assignments.js"></script>
