@@ -2,7 +2,6 @@
 function uploadCourseId()
 {
 	var courseId = document.getElementById("courseId").value;
-	alert(courseId)
 	     var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
@@ -21,18 +20,34 @@ function uploadCourseId()
 
         function  UploadChapterId() {
             var chapterId = document.getElementById("chapterId").value;
-            alert(chapterId)
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("assignment").innerHTML = this.responseText;
+                    document.getElementById("SelectTopic").innerHTML = this.responseText;
                 }
             };
           
-                xhttp.open("POST", '/viewUploadChapterID/' + chapterId, true);
+                xhttp.open("POST", '/UploadChapterId/' + chapterId, true);
         
             xhttp.send();
 	   
+	   
+ }
+ 
+ 
+ function viewTopic(TopicId)
+ {
+	 
+	  var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("addInterviewQuestion").innerHTML = this.responseText;
+                }
+            };
+          
+                xhttp.open("POST", '/UploadTopicId/' + TopicId, true);
+        
+            xhttp.send();
 	   
  }
  
