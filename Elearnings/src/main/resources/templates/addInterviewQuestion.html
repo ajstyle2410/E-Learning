@@ -24,7 +24,7 @@
 					<select class="form-select form-select-lg mb-3"
 						aria-label="Large select example" name="chapterId" id="chapterId"
 						onChange="uploadChapterId()">
-						<option disabled selected>Select the chapter</option>
+						<option disabled selected>Select the chapter***</option>
 						<option th:each="list : ${list}" th:value="${list.ChapterId}"
 							th:text="${list.ChapterName}"></option>
 					</select>

@@ -58,34 +58,21 @@ import com.elearning.service.TopicServiceInterface;
 
 		map.addAttribute("cId", 0);
 
-		return new ModelAndView("addAssignments");
+		return new ModelAndView("./assignment/addAssignments");
 	}
 
-	// view Assignments
-
-	@GetMapping("viewAssignment")
-	public ModelAndView viewAllAssignments(ModelMap map) {
-		List<Course> list = courseServiceInterface.viewCourse();
-
-		map.addAttribute("list", list);
-
-		map.addAttribute("cId", 0);
-		return new ModelAndView("viewAssignments");
-	}
-
-	@PostMapping("/viewUploadCourseId/{courseId}")
-	public ModelAndView viewUploadCourse(@PathVariable("courseId") long courseId, Model map) {
-		System.out.println("=============> " + courseId);
+	@PostMapping("/UploadCourseId/{courseId}")
+	public ModelAndView UploadCourse(@PathVariable("courseId") long courseId, Model map) {
 		List<Course> list = courseServiceInterface.viewCourse();
 
 		map.addAttribute("list", list);
 		List<Chapter> chapters = chapterServiceInterface.viewCourseWiseChapters(courseId);
-		ModelAndView modelAndView = new ModelAndView("addAssignmentChapter");
+		ModelAndView modelAndView = new ModelAndView("./assignment/addAssignmentChapter");
 		modelAndView.addObject("chapters", chapters);
 		return modelAndView;
 	}
 
-	@PostMapping("UploadChaptersID/{chapterId}")
+	@PostMapping("UploadChapterID/{chapterId}")
 	public ModelAndView UploadChapter(@PathVariable long chapterId, Model model) {
 		System.err.println("Chapter Id is :" + chapterId);
 		List<Topic> topic = topicServiceInterface.viewChapterWiseSTopics(chapterId);
@@ -93,74 +80,102 @@ import com.elearning.service.TopicServiceInterface;
 		for (Iterator<Topic> iterator = topic.iterator(); iterator.hasNext();) {
 			Topic t = (Topic) iterator.next();
 
-			System.out.println(t.getTopicName());
+			System.err.println(t.getTopicName());
 		}
 
-		ModelAndView modelAndView = new ModelAndView("topicWiseAssignment");
+		ModelAndView modelAndView = new ModelAndView("./assignment/topicWiseAssignment");
 		modelAndView.addObject("topic", topic);
 
 		return modelAndView;
 
 	}
 
-	@GetMapping("uploadBulkAssignments/{topicId}")
-	public ModelAndView uploadBulkAssignments(@PathVariable Integer topicId, ModelMap map) {
-
-		System.out.println("********** Topic id is " + topicId);
-		map.addAttribute("topicId", topicId);
-		return new ModelAndView("uploadBulkAssignments");
+	@PostMapping("uploadBulkAssignments/{topicId}")
+	public ModelAndView uploadBulkAssignments(@PathVariable Integer  topicId,ModelMap map ) {
+		
+		  System.err.println("********** Topic id is "+topicId);
+		  map.addAttribute("topicId",topicId);
+		return new ModelAndView("./assignment/uploadBulkAssignments");
 	}
 
 	@PostMapping("sendAssignment")
 	public ModelAndView sendAssignments(@RequestPart("file") MultipartFile file, @RequestParam String Type,
 			@RequestParam("topicId") Integer topicId, ModelMap model) {
-
+		
 		AssignmentDTO dto = new AssignmentDTO();
 		dto.setTopicId(topicId);
 		dto.setType(Type);
 		String msg = assignmentServiceInterface.UploadBulkAssignments(dto, file);
- 
+
 		model.addAttribute("msg", msg);
 
-		return new ModelAndView("uploadBulkAssignments");
-
-	}
-
-	// view Assignments  Information 
-	
-	
-	@PostMapping("UploadChapterID/{chapterId}")
-	public ModelAndView viewUploadChapter(@PathVariable long chapterId, Model model) {
-		System.err.println("Chapter Id is :" + chapterId);
-		List<Topic> topic = topicServiceInterface.viewChapterWiseSTopics(chapterId);
-
-
-		ModelAndView modelAndView = new ModelAndView("TopicList");
-		modelAndView.addObject("topic", topic);
-
-		return modelAndView;
+		return new ModelAndView("./assignment/uploadBulkAssignments");
 
 	}
 	
-	// view Bulk Assignments
 	
-	@GetMapping("viewBulkAssignments/{topicId}")
-	  public ModelAndView viewBulkAssignments(@PathVariable long topicId)
+	
+	//     ******************************   view Assignments  ***********************************************
+	   @GetMapping("viewAssignment")
+	  public ModelAndView getAssignments(ModelMap map)
 	  {
-		  System.out.println("Topic id is ++++++"+topicId);
-		ModelAndView modelAndView = new ModelAndView("assignments");
-		List<Assignment> assignments = assignmentServiceInterface.findByTopicWiseAssignments(topicId);
-		
-		  for (Iterator iterator = assignments.iterator(); iterator.hasNext();) {
-			Assignment assignment = (Assignment) iterator.next();
-			System.out.println(assignment.getQuestion());
-			
-		}
-		
-		modelAndView.addObject("assignments", assignments);
+            
+		   List<Course> list = courseServiceInterface.viewCourse();
 
-		return modelAndView;
+			map.addAttribute("list", list);
+
+			map.addAttribute("cId", 0);
+
+			return new ModelAndView("./assignment/viewAssignments/viewAssignments");
 	  }
 	
+
+		@PostMapping("/viewUploadCourseId/{courseId}")
+		public ModelAndView viewUploadCourse(@PathVariable("courseId") long courseId, Model map) {
+			List<Course> list = courseServiceInterface.viewCourse();
+
+			  System.err.println("view CourseId "+courseId);
+			
+			map.addAttribute("list", list);
+			List<Chapter> chapters = chapterServiceInterface.viewCourseWiseChapters(courseId);
+			ModelAndView modelAndView = new ModelAndView("./assignment/viewAssignments/viewAssignmentChapter");
+			modelAndView.addObject("chapters", chapters);
+			return modelAndView;
+		}
+ 
+	   @PostMapping("viewUploadTopicID/{chapterId}")
+		public ModelAndView viewUploadChapter(@PathVariable long chapterId, Model model) {
+			System.err.println("Chapter Id is :" + chapterId);
+			List<Topic> topic = topicServiceInterface.viewChapterWiseSTopics(chapterId);
+
+			for (Iterator<Topic> iterator = topic.iterator(); iterator.hasNext();) {
+				Topic t = (Topic) iterator.next();
+				System.err.println(t.getTopicName());
+			}
+
+			ModelAndView modelAndView = new ModelAndView("./assignment/viewAssignments/viewTopics");
+			modelAndView.addObject("topic", topic);
+
+			return modelAndView;
+
+		}
+	   
+	    
+	@PostMapping("viewUploadAssignment/{topicId}")
+      public ModelAndView viewUploadTopics(@PathVariable long  topicId)
+	{
+		System.err.println("********* TopicId is "+topicId);
+		List<Assignment> assignment = assignmentServiceInterface.findByTopicWiseAssignments(topicId);
+		
+		for (Iterator<Assignment> iterator = assignment.iterator(); iterator.hasNext();) {
+			Assignment s = (Assignment) iterator.next();
+			System.out.println(s.getQuestion());
+		}
+		
+		ModelAndView modelAndView = new ModelAndView("./assignment/viewAssignments/assignments");
+		modelAndView.addObject("assignment", assignment);
+
+		return modelAndView;
+	}
 	
 }

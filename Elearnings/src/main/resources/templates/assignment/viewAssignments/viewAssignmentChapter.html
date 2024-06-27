@@ -1,0 +1,15 @@
+<link th:href="@{./css/index.css}" rel="stylesheet" />
+
+<div th:insert="~{../templates/index.html}"></div>
+<div id="ChapterList">
+ <select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="chapterId" id="chapterId" onchange="viewUploadChapterId()"
+							>
+							<option disabled selected>Select the Chapter</option>
+							<option th:each="list : ${chapters}" th:value="${list.ChapterId}"
+								th:text="${list.ChapterName}"></option>
+						</select>
+						
+						</div>
+				
+				<script src="./js/Assignments.js"></script>

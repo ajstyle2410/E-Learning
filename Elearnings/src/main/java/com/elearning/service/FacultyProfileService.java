@@ -30,7 +30,7 @@ public class FacultyProfileService implements FacultyProfileServiceInterface {
 		System.out.println("Faculty Service " + facultyProfileDTO.toString());
 
 		FacultyProfile faculty = new FacultyProfile(facultyProfileDTO.getFacultyName(),
-				facultyProfileDTO.getProfilePhoto(), facultyProfileDTO.getDesignation(),
+				facultyProfileDTO.getProfilePhoto().getOriginalFilename(), facultyProfileDTO.getDesignation(),
 				facultyProfileDTO.getQualification(), facultyProfileDTO.getSkillSet(),
 				facultyProfileDTO.getExperience(), facultycourseid);
 

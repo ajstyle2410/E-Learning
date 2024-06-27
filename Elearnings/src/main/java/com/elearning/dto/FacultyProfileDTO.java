@@ -1,15 +1,16 @@
 package com.elearning.dto;
 
-import com.elearning.model.Course;
-import jakarta.persistence.CascadeType;
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Builder
 public class FacultyProfileDTO {
 
  
@@ -18,7 +19,7 @@ public class FacultyProfileDTO {
     private String facultyName;
 
     @Column(columnDefinition = "TEXT")
-    private String profilePhoto;
+    private MultipartFile profilePhoto;
 
     @Column(columnDefinition = "TEXT")
     private String designation;
@@ -33,7 +34,7 @@ public class FacultyProfileDTO {
 
     private long   courseId;
 
-    public FacultyProfileDTO(String facultyName, String profilePhoto, String designation, String qualification,
+    public FacultyProfileDTO(String facultyName, MultipartFile profilePhoto, String designation, String qualification,
                           String skillSet, String experience, long courseid) {
         super();
         this.facultyName = facultyName;

@@ -1,4 +1,4 @@
-<link th:href="@{./css/index.css}" rel="stylesheet" />
+1<link th:href="@{./css/index.css}" rel="stylesheet" />
 
 <div th:insert="~{../templates/index.html}"></div>
 
@@ -22,9 +22,14 @@
 			<td th:text=${im.topicName}></td>
 			<td>
 				<ul class="nav nav-pills">
-					<li class="nav-item"><a class="nav-link"
+				<!-- 	<li class="nav-item"><a class="nav-link"
 						th:href="@{'/uploadBulkAssignments/' + ${im.topicId}}">Add
-							Bulk Assignments</a></li>
+							Bulk Assignments</a></li> -->
+							 <li class="nav-item">
+                        <a class="nav-link"
+                           href="#"
+                           th:onclick="'uploadTopic(' + ${im.topicId} + ')'">Add Bulk Assignments</a>
+                    </li>
 				</ul>
 
 

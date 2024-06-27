@@ -15,4 +15,5 @@ public interface AssignmentServiceInterface {
 
 	public List<Assignment> findByTopicWiseAssignments(long topicId);
 
+
 }

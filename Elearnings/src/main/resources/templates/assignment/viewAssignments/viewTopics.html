@@ -1,0 +1,30 @@
+<div id="Topic">
+
+
+	<table
+		summary="This table shows how to create responsive tables using Datatables' extended functionality"
+		class="table table-bordered table-hover dt-responsive">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Topic Name</th>
+				<th scope="col">View Topic Assignment</th>
+			</tr>
+		</thead>
+		<tbody>
+			 <tr th:each="list : ${topic}">
+                <th scope="row" th:text="${list.topicId}"></th>
+                <th scope="row" th:text="${list.topicName}"></th>
+                <th scope="row">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" th:onclick="'viewTopic(' + ${list.topicId} + ')'">View Assignments</a>
+                        </li>
+                    </ul>
+                </th>
+            </tr>
+		</tbody>
+	</table>
+
+
+</div>

@@ -19,17 +19,20 @@
 							<option th:each="list : ${list}" th:value="${list.courseId}"
 								th:text="${list.courseName}"></option>
 						</select>
-      
+						      
       </div>
       
        <div class="col-6">
      
-				    <div id="table"></div> <!-- This is where the table records will be displayed -->				
+				    <div id="ChapterList"></div> <!-- This is where the table records will be displayed -->				
       </div>
       
        <div class="col-12">
+				    <div id="Topic"></div> <!-- This is where the table records will be displayed -->				
+      </div>
+      
+         <div class="col-12">
 				    <div id="assignment"></div> <!-- This is where the table records will be displayed -->				
-
       </div>
       
     </div>
@@ -37,4 +40,4 @@
 </div>
 </div>
 
-<script src="./js/Assignments.js"></script>
+<script src="../js/Assignment/view/viewAssignment.js"></script>
