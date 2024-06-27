@@ -8,7 +8,6 @@
 
  function viewUploadCourseId(){
   var courseId =document.getElementById("courseId").value;
-   alert("view course Id" +courseId)
     window.location.href = "/uploadCoursesId/" + courseId;
  }
  
