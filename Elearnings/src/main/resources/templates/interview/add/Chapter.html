@@ -2,12 +2,12 @@
 <h1 id="SelectChapter">
  <select class="form-select form-select-lg mb-3"
 						aria-label="Large select example" name="chapterId" id="chapterId"
-						onChange="uploadChapterId()">
-						<option disabled selected>Select the chapter</option>
+						onChange="UploadChapterId()">
+						<option disabled selected>***Select the chapter</option>
 						<option th:each="list : ${list}" th:value="${list.ChapterId}"
 							th:text="${list.ChapterName}"></option>
 					</select>
 
 </h1>
 
-
+	<script th:src="@{../js/Interview/add/addInterivew.js}"></script>
