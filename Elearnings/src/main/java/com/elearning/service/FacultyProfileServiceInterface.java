@@ -9,6 +9,7 @@ public interface  FacultyProfileServiceInterface {
 
 	public String addFaculty(FacultyProfileDTO facultyProfileDTO);
 
-	public List<FacultyProfile> findFaculty();
+
+	public List<FacultyProfile> viewAllFaculty();
 
 }

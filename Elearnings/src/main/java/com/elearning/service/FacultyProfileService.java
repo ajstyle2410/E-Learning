@@ -45,8 +45,9 @@ public class FacultyProfileService implements FacultyProfileServiceInterface {
 
 	}
 
+
 	@Override
-	public List<FacultyProfile> findFaculty() {
+	public List<FacultyProfile> viewAllFaculty() {
 		return facultyProfileRepository.findAll();
 	}
 

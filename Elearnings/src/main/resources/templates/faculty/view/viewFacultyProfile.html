@@ -1,0 +1,55 @@
+
+<div th:insert="~{../templates/admin.html}"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center ">
+			<table
+				summary="This table shows how to create responsive tables using Datatables' extended functionality"
+				class="table table-bordered table-hover dt-responsive">
+				<thead>
+					<tr>
+						<th>#</th>
+
+						<th>Facutly Name</th>
+						<th>Faculty Photo</th>
+						<th>Qualification</th>
+						<th>Course Name</th>
+						<th>More details</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="im : ${faculty}" class="text-center">
+						<td th:text=${im.facultyId}></td>
+
+						<td th:text=${im.facultyName}></td>
+						<td th:text=${im.designation}></td>
+
+
+						<td><img th:src="@{'/uploads/' + ${im.profilePhoto}}" width="25%"
+							height="auto" alt="profile Photo not found" /> </td>
+				<td th:text=${im.Course.courseName}></td>
+				
+				<td> <p><a href="#" class="link-underline-light">view more details</a></p>
+				</td>
+
+						<td>
+							 <div class="d-flex gap-2">
+								<a href="#" class="item">update</a> 
+								<a th:href="@{'/deleteCourse/' + ${im.Course.courseId}}">Delete</a>
+							</div> 
+						</td>
+
+					</tr>
+
+
+				</tbody>
+				<tfoot>
+
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>
+<script src="../js/Faculty/addFaculty.js"></script>

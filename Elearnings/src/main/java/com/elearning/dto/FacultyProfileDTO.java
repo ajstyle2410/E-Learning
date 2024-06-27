@@ -3,7 +3,6 @@ package com.elearning.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

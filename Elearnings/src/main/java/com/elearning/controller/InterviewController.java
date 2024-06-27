@@ -49,7 +49,7 @@ public class InterviewController {
 		map.addAttribute("lists", lists);
 		map.addAttribute("cId", 0);
 
-		return new ModelAndView("addInterviewQuestion");
+		return new ModelAndView("./interview/add/addInterviewQuestion");
 	}
 
 	@GetMapping("viewInterviewQuestion")
@@ -61,20 +61,19 @@ public class InterviewController {
 		return new ModelAndView("viewInterviewQuestion");
 	}
 
-	@GetMapping("/uploadCourseIds/{courseId}")
+	@PostMapping("/uploadCourseId/{courseId}")
 	public ModelAndView uploadCourseId(@PathVariable long courseId, ModelMap map) {
-
+System.err.println("Course Id"+courseId);
+		
 		List<Chapter> chapter = interviewQuestionInterface.finedCourseIdWiseRecords(courseId);
 		map.addAttribute("list", chapter);
 
-		List<Course> lists = courseServiceInterface.viewCourse();
-		map.addAttribute("lists", lists);
-		return new ModelAndView("addInterviewQuestion");
+		return new ModelAndView("./interview/add/Chapter");
 	}
 
 	// view Chpaters for ViewInterview Question
 
-	@GetMapping("/uploadCoursesId/{courseId}")
+	@GetMapping("/viewUploadChapterID/{courseId}")
 	public ModelAndView uploadCoursesId(@PathVariable long courseId, ModelMap map) {
 
 		System.out.println("course id is ----------------------> " + courseId);

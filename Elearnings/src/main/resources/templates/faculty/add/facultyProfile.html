@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{./css/index.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">Faculty Profile</div>
+        <div class="card-body">
+            <div class="row">
+                <form th:action="@{/addfaculty}" method="post" enctype="multipart/form-data">
+                    <div class="col-12">
+                        <label for="validationCustom01" class="form-label">Faculty Name</label>
+                        <input type="text" class="form-control" id="validationCustom01" placeholder="full Name" required name="facultyName">
+                    </div>
+                    <div class="col-6">
+                        <label for="validationCustom01" class="form-label">Select Course</label>
+                         <select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="courseId" id="courseId"
+							>
+							<option disabled selected>Select the course</option>
+							<option th:each="list : ${list}" th:value="${list.courseId}"
+								th:text="${list.courseName}"></option>
+						</select>
+                    </div>
+                    <div class="col-6">
+                        <label for="validationCustom01" class="form-label">Upload Identity Photo</label>
+                        <input type="file" class="form-control" id="validationCustom01" required name="profilePhoto">
+                    </div>
+                    <div class="col-6">
+                        <label for="validationCustom01" class="form-label">Faculty Designation</label>
+                        <input type="text" class="form-control" id="validationCustom01" required name="designation">
+                    </div>
+                    <div class="col-6">
+                        <label for="validationCustom01" class="form-label">Faculty Qualification</label>
+                        <input type="text" class="form-control" id="validationCustom01" required name="qualification">
+                    </div>
+                    <div class="col-">
+                        <label for="validationCustom01" class="form-label">Faculty SkillSet</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="faculty SkillSet" id="floatingTextarea2" style="height: 100px" name="skillSet"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="validationCustom01" class="form-label">Faculty Experience</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="faculty experience" id="floatingTextarea2" style="height: 100px" name="experience"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
