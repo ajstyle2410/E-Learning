@@ -1,0 +1,10 @@
+<select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="chapterId" id="chapterId"
+							onChange="viewUploadChapterId()">
+							<option disabled selected>Select the chapter</option>
+							<option th:each="list : ${list}" th:value="${list.ChapterId}"
+								th:text="${list.ChapterName}"></option>
+						</select>
+						
+								<script th:src="@{./js/Interview/view/viewInterview.js}"></script>
+						
