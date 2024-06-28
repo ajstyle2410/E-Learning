@@ -1,0 +1,46 @@
+<div th:insert="~{../templates/admin.html}" class="sticky-top"></div>
+
+<style>
+*{
+      scroll-behavior: smooth;
+    
+}
+</style>
+
+<div class="container mt-5">
+	<div class="card">
+		<div class="card-header">Featured</div>
+		<div class="card-body">
+			<div class="row">
+				
+					<div class="col-8">
+						<select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="courseId" id="courseId"  onchange="UploadCourseId()">
+							<option disabled selected>Select the course</option>
+							<option th:each="list : ${list}" th:value="${list.courseId}"
+								th:text="${list.courseName}" onchange="fetchCourseId()"></option>
+						</select>
+					</div>
+					<div class="col-12">
+				
+				 <div id="TopicPage"></div>
+			
+				</div>
+				<div class="col-12">
+				
+				 <div id="Chapter"></div>
+			
+				</div>
+				
+						
+				
+				
+			</div>
+		</div>
+	</div>
+</div>
+	<script src="../js/Topic/add/addTopic.js">
+	
+	</script>
+
+
