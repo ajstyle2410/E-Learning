@@ -1,0 +1,89 @@
+
+    <div class="container-fluid" id="Topic">
+      <div class="card mt-5">
+        <div class="card-header">Quote</div>
+        <div class="card-body">
+          <form th:action="@{/addTopicss}" th:method="post">
+            <div class="row row-gap-3">
+              <div class="col-6">
+                <span>Enter Topic Name</span>
+                <div class="input-group flex-nowrap">
+                  <input
+                    type="text"
+                    name="topicName"
+                    class="form-control"
+                    placeholder="Topic name"
+                    aria-label="TopicName"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <span>Enter the Topic Title</span>
+                <div class="input-group flex-nowrap">
+                  <input
+                    type="text"
+                    name="topicTitle"
+                    class="form-control"
+                    placeholder="Topic title"
+                    aria-label="TopicTitle"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <span>Enter Topic Description</span>
+                <div class="input-group flex-nowrap">
+                  <input
+                    type="text"
+                    name="topicDescription"
+                    class="form-control py-3"
+                    placeholder="Enter description"
+                    aria-label="TopicDescription"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <span>Enter Video URL</span>
+                <div class="input-group flex-nowrap">
+                  <input
+                    type="url"
+                    name="videoUrl"
+                    class="form-control"
+                    placeholder="Video URL"
+                    aria-label="VideoURL"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="input-group flex-nowrap">
+                  <input
+                    type="text"
+                    name="chapterId"
+                    th:value="${chapterId}"
+                    class="form-control"
+                    aria-label="ChapterID"
+                    aria-describedby="addon-wrapping"
+                    readonly
+                  />
+                </div>
+              </div>
+           
+  <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
