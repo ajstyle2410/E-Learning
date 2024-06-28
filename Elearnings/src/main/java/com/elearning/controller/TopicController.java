@@ -43,42 +43,51 @@ public class TopicController {
 	@GetMapping("topicPage")
 	public ModelAndView viewTopic(ModelMap map) {
 		List<Course> list = courseServiceInterface.viewCourse();
-		List<Chapter> chapters = chapterServiceInterface.viewChapters();
+		// List<Chapter> chapters = chapterServiceInterface.viewChapters();
 
 		map.addAttribute("list", list);
-		map.addAttribute("chapters", chapters);
-		map.addAttribute("cId", 0); // Default value for initial load
-		return new ModelAndView("viewTopics");
+		return new ModelAndView("./topic/view/viewTopics");
 	}
 
-	@PostMapping("findByCourseId")
-	public ModelAndView findByCourseIdRecords(@RequestParam("courseId") long courseId, ModelMap map) {
+	@PostMapping("uploadCourseByTopic/{courseId}")
+	public ModelAndView findByCourseIdRecords(@PathVariable long courseId, ModelMap map) {
+		System.err.println("Course Id " + courseId);
 
-		List<Course> list = courseServiceInterface.viewCourse();
 		List<Chapter> chapters = chapterServiceInterface.viewCourseWiseChapters(courseId);
 
-		map.addAttribute("list", list);
 		map.addAttribute("chapters", chapters);
-		map.addAttribute("cId", courseId);
-		return new ModelAndView("viewTopics");
+
+		return new ModelAndView("./topic/add/addTopicChapter");
 	}
 
-	@GetMapping("addTopics/{cid}")
-	public ModelAndView addTopics(@PathVariable("cid") Integer cid, ModelMap map) {
-		map.addAttribute("cid", cid);
-		return new ModelAndView("addTopic");
+	@PostMapping("addTopics/{chapterId}")
+	public ModelAndView addTopics(@PathVariable Integer chapterId, ModelMap map) {
+		map.addAttribute("cid", chapterId);
+		return new ModelAndView("./topic/view/viewTopics");
+	}
+
+	@PostMapping("uploadChpaerByTopic/{chapterId}")
+	public ModelAndView adduploadChpaerByTopic(@PathVariable long chapterId, ModelMap map) {
+		List<Topic> topic = topicServiceInterface.viewChapterWiseSTopics(chapterId);
+		map.addAttribute("topic", topic);
+		map.addAttribute("chapterId", chapterId);
+		return new ModelAndView("./topic/add/addTopic");
+	
 	}
 
 	@PostMapping("addTopicss")
 	public ModelAndView saveTopic(@RequestParam("topicName") String topicName, @RequestParam String topicTitle,
+
 			@RequestParam String topicDescription, @RequestParam String videoUrl, @RequestParam Integer chapterId) {
 		TopicDTO topic = new TopicDTO(topicName, chapterId);
 		topicServiceInterface.addTopics(topic);
-		Topic topics = topicServiceInterface.findByTopicRecords(topicName);		
+		Topic topics = topicServiceInterface.findByTopicRecords(topicName);
 		Video video = new Video(topicDescription, topicTitle, videoUrl, topics);
 		String msg = videoServiceInterface.addVideo(video);
 
 		System.out.println(msg);
-		return new ModelAndView("redirect:findByCourseId");
+		return new ModelAndView("redirect:/topicPage");
+
 	}
+
 }
