@@ -23,47 +23,18 @@
 
 					<div class="col-6">
 					<div id="SelectChapter"></div>
-					<!--  
-						
-						
-						-->
+			
 					</div>
 
           <div class="12">
-						<select class="form-select form-select-lg mb-3"
-							aria-label="Large select example" name="topicId" id="topicId"
-							onChange="UploadTopicId()">
-							<option disabled selected>Select the Topic</option>
-							<option th:each="list : ${topic}" th:value="${list.TopicId}"
-								th:text="${list.topicName}"></option>
-						</select>
-          
+						<div id="Topics"></div>
           
           </div>
 
 					<div class="col-12">
 
 
-                   	<table
-						summary="This table shows how to create responsive tables using Datatables' extended functionality"
-						class="table table-bordered table-hover dt-responsive">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Interview Question Name</th>
-								<th scope="col">Add Topic</th>
-							</tr>
-						</thead>
-						<tbody>
-							 <tr th:each="list : ${InterviewQuestion}">
-							 	<th scope="row" th:text="${list.interviewQuestionId}"></th>
-								<th scope="row" th:text="${list.question}"></th>
-							<th scope="row" th:text="${list.description}"></th>
-							
-							</tr> 
-						</tbody>
-					</table>
-
+                   	  <div id="InterviewQuestion"></div>
 
 </div>
 					</div>
