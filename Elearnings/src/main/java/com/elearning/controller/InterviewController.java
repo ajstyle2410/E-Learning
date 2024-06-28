@@ -1,5 +1,6 @@
 package com.elearning.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.elearning.dto.InterviewQuestionDTO;
 import com.elearning.model.Chapter;
 import com.elearning.model.Course;
+import com.elearning.model.InterviewQuestion;
 import com.elearning.model.Topic;
 import com.elearning.service.ChapterServiceInterface;
 import com.elearning.service.CourseServiceInterface;
@@ -106,9 +108,51 @@ public class InterviewController {
 
 		List<Chapter> chapter = chapterServiceInterface.viewCourseWiseChapters(courseId);
 
-		 map.addAttribute("chapter" , chapter);
-		 
-		return new ModelAndView("./interview/view/Chapter");
+		for (Iterator<Chapter> iterator = chapter.iterator(); iterator.hasNext();) {
+			Chapter c = (Chapter) iterator.next();
+			System.err.println(c.getChapterName());
+		}
+
+		map.addAttribute("chapter", chapter);
+
+		return new ModelAndView("./interview/view/Chpater.html");
+
+	}
+
+	@PostMapping("uploadChapterWiseTopicQuestions/{chapterId}")
+	public ModelAndView uploadChapterWiseTopicQuestions(@PathVariable long chapterId, ModelMap model) {
+
+		System.out.println("Chapter id is ======>" + chapterId);
+
+		List<Course> lists = courseServiceInterface.viewCourse();
+		model.addAttribute("lists", lists);
+		List<Topic> topic = topicServiceInterface.viewChapterWiseSTopics(chapterId);
+
+		for (Iterator<Topic> iterator = topic.iterator(); iterator.hasNext();) {
+			Topic t = (Topic) iterator.next();
+
+			System.err.println("****************************" + t.getTopicName());
+		}
+
+		model.addAttribute("topic", topic);
+		return new ModelAndView("./interview/view/viewInterviewTopic.html");
+
+	}
+
+	@PostMapping("/uploadTopicId/{topicId}")
+	public ModelAndView AddInterviewQuestion(@PathVariable long topicId, ModelMap map) {
+
+		System.err.println("Topic Id " + topicId);
+
+		List<InterviewQuestion> interviewQuestion = interviewQuestionInterface.viewInterviewQuestionByTopicId(topicId);
+
+		for (Iterator<InterviewQuestion> iterator = interviewQuestion.iterator(); iterator.hasNext();) {
+			InterviewQuestion i = (InterviewQuestion) iterator.next();
+			System.out.println(i.getQuestion());
+		}
+
+		map.addAttribute("interviewQuestion", interviewQuestion);
+		return new ModelAndView("./interview/view/InterviewQuestion");
 
 	}
 
