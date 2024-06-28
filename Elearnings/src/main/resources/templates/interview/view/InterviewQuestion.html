@@ -1,0 +1,23 @@
+<div id="InterviewQuestion">
+<table
+						summary="This table shows how to create responsive tables using Datatables' extended functionality"
+						class="table table-bordered table-hover dt-responsive">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Interview Question Name</th>
+								<th scope="col">Add Topic</th>
+							</tr>
+						</thead>
+						<tbody>
+							 <tr th:each="list : ${interviewQuestion}">
+							 	<th scope="row" th:text="${list.interviewQuestionId}"></th>
+								<th scope="row" th:text="${list.question}"></th>
+							<th scope="row" th:text="${list.description}"></th>
+							
+							</tr> 
+						</tbody>
+					</table>
+
+
+</div>
