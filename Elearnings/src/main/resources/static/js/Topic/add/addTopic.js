@@ -1,4 +1,6 @@
 
+alert("add topic")
+
 function UploadCourseId() {
 	var courseId = document.getElementById("courseId").value;
 
