@@ -46,7 +46,7 @@ public class TopicController {
 		// List<Chapter> chapters = chapterServiceInterface.viewChapters();
 
 		map.addAttribute("list", list);
-		return new ModelAndView("./topic/view/viewTopics");
+		return new ModelAndView("./topic/add/AddTopicCourse");
 	}
 
 	@PostMapping("uploadCourseByTopic/{courseId}")
@@ -72,7 +72,7 @@ public class TopicController {
 		map.addAttribute("topic", topic);
 		map.addAttribute("chapterId", chapterId);
 		return new ModelAndView("./topic/add/addTopic");
-	
+
 	}
 
 	@PostMapping("addTopicss")
@@ -87,6 +87,39 @@ public class TopicController {
 
 		System.out.println(msg);
 		return new ModelAndView("redirect:/topicPage");
+
+	}
+
+	// ***************** View Topics ************************************
+
+	@GetMapping("viewTopicPage")
+
+	public ModelAndView viewTopicPage(ModelMap map) {
+
+		List<Course> list = courseServiceInterface.viewCourse();
+
+		map.addAttribute("list", list);
+
+		return new ModelAndView("./topic/view/viewTopicPage");
+	}
+
+	@PostMapping("CourseId/{courseId}")
+	public ModelAndView getCourseId(@PathVariable long courseId, ModelMap map) {
+		System.err.println("*** =========> " + courseId);
+		List<Chapter> chapters = chapterServiceInterface.viewCourseWiseChapters(courseId);
+
+		map.addAttribute("chapters", chapters);
+		return new ModelAndView("./topic/view/viewTopicChapter");
+	}
+
+	@PostMapping("TopicChapterId/{chapterId}")
+	public ModelAndView getTopicChapterId(@PathVariable long chapterId,ModelMap map) {
+
+		
+	List<Topic>  topic=	topicServiceInterface.viewChapterWiseSTopics(chapterId);
+	
+	  map.addAttribute("topic",topic);
+		return new ModelAndView("./topic/view/viewTopic");
 
 	}
 
