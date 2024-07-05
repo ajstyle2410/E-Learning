@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+
+section {
+    background-color: rgba(22, 25, 44, 1);
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+section::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: rgba(22, 25, 44, 1);
+    opacity: 50%;
+}
