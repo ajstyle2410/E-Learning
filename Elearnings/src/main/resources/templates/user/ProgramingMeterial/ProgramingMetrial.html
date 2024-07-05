@@ -1,0 +1,43 @@
+<div th:insert="~{../templates/user/UserDashboard.html}"></div>
+
+	<div class="container pb-5">
+		<div class="card">
+			<div class="card-header">Featured</div>
+			<div class="card-body">
+				<h5 class="card-title">Special title treatment</h5>
+				<!--                                                     <form th:action="@{/uploadInterviewQuestions}" enctype="multipart/form-data" th:method="post">
+ -->
+				<div class="row">
+
+					<div class="col-6">
+						<select class="form-select form-select-lg mb-3"
+							aria-label="Large select example" name="courseId" id="courseId"
+							onchange="viewUploadCourseId()">
+							<option disabled selected>Select the course</option>
+							<option th:each="list : ${course}" th:value="${list.courseId}"
+								th:text="${list.courseName}"></option>
+						</select>
+					</div>
+
+					<div class="col-6">
+					<div id="SelectChapter"></div>
+			
+					</div>
+
+          <div class="12">
+						<div id="Topics"></div>
+          
+          </div>
+
+					<div class="col-12">
+
+
+                   	  <div id="InterviewQuestion"></div>
+
+</div>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+	
