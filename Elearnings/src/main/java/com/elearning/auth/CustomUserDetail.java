@@ -14,9 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CustomUserDetail implements UserDetails {
           
-	  /**
-	 * 
-	 */
+	  
 	private static final long serialVersionUID = 1L;
 	private UserProfile userProfile;
 
