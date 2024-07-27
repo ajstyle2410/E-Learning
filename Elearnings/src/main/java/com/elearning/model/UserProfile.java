@@ -34,8 +34,7 @@ public class UserProfile {
 		Enabled = enabled;
 		Role = role;
 	}
-	  
-	  
+
 	@OneToOne(mappedBy = "userProfile")
 	 private  UserCourse userCourse;
 	  
