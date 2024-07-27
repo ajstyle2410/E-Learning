@@ -78,7 +78,7 @@ public class FacultyProfileController {
 		faculty = facultyProfileService.viewAllFaculty();
 		
 		
-		 for (Iterator iterator = faculty.iterator(); iterator.hasNext();) {
+		 for (Iterator<FacultyProfile> iterator = faculty.iterator(); iterator.hasNext();) {
 			FacultyProfile f = (FacultyProfile) iterator.next();
 			System.out.println(f.getFacultyName());
 		}
