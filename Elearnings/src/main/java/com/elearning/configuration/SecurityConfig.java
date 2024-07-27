@@ -17,7 +17,8 @@ import com.elearning.auth.CustomUserService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-     @Autowired
+     
+	@Autowired
 	private CustomSucessHandler customSucessHandler;
      
      @Autowired
